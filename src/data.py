@@ -44,7 +44,7 @@ def _check_class_balance(dataset):
 
 def load_hatexplain_dataset():
     print("[INFO] Loading HateXplain dataset from Hugging Face Datasets hub...")
-    dataset = load_dataset("Hate-speech-CNERG/hatexplain")
+    dataset = load_dataset("Hate-speech-CNERG/hatexplain", trust_remote_code=True)
     dataset = _apply_majority_vote(dataset)
     _check_class_balance(dataset)
     print("[INFO] HateXplain dataset loaded successfully.")

@@ -1,0 +1,49 @@
+# =========================================================
+#   NUS DSA4213 Assignment 3 - .gitignore
+# =========================================================
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+*.egg-info/
+.DS_Store
+.venv/
+venv/
+.env/
+.envrc
+.ipynb_checkpoints/
+
+# ---- Datasets / Cache ----
+data/encoded_hatexplain/
+data/*.json
+*.csv
+*.tsv
+*.pkl
+*.npz
+*.npy
+
+# Hugging Face cache
+~/.cache/huggingface/
+~/.huggingface/
+
+# ---- Model Outputs ----
+outputs/
+checkpoints/
+*.bin
+*.pt
+*.ckpt
+*.safetensors
+*.onnx
+
+# ---- Logs / Experiments ----
+runs/
+wandb/
+logs/
+event*.*
+
+# ---- OS / Editor ----
+.idea/
+.vscode/
+*.swp
