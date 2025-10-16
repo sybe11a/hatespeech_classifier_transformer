@@ -115,6 +115,15 @@ def main():
     trainer.train()
     print("[INFO] LoRA fine-tuning complete.")
 
+    # Save training logs
+    metrics = trainer.state.log_history   # includes all loss/metric logs
+    import json, os
+
+    os.makedirs("outputs/history", exist_ok=True)
+    with open("outputs/history/lora_ft_logs.json", "w") as f:
+        json.dump(metrics, f, indent=2)
+
+
     print("[INFO] Evaluating on test set...")
     results = trainer.evaluate(dataset["test"])
     print(results)
