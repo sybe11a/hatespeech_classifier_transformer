@@ -139,17 +139,6 @@ After running the experiments, you'll find:
 - Model checkpoints are gitignored due to size constraints
 - Encoded datasets are gitignored; run tokenization scripts to regenerate
 
-## Troubleshooting
-
-**Issue**: CUDA out of memory
-- Reduce batch size in training scripts (default: 16)
-
-**Issue**: MPS backend errors on Mac
-- Set `device = "cpu"` in training scripts
-
-**Issue**: Missing dataset
-- Ensure `data/dataset.json` exists before tokenization
-
 ## References
 
 - HateXplain Dataset: [Paper](https://arxiv.org/abs/2012.10289)
