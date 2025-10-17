@@ -10,7 +10,7 @@ This project explores:
 - **Robustness evaluation** under noisy input conditions
 - **Attention visualization** for model interpretability
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Prerequisites
 
@@ -21,7 +21,7 @@ This project explores:
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/sybe11a/sybella-dsa4213-assignment3.git
 cd sybella-dsa4213-assignment3
 
 # Create virtual environment
@@ -53,7 +53,7 @@ python main.py
 
 Or run individual steps manually (see [Manual Execution](#manual-execution) below).
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 .
@@ -81,7 +81,7 @@ Or run individual steps manually (see [Manual Execution](#manual-execution) belo
     └── plots/                   # Training curve visualizations
 ```
 
-## 🔬 Manual Execution
+## Manual Execution
 
 If you prefer to run experiments step-by-step:
 
@@ -124,7 +124,7 @@ python src/visualise_attention.py
 python src/plot_training_curves.py
 ```
 
-## 📊 Results
+## Results
 
 After running the experiments, you'll find:
 
@@ -133,19 +133,13 @@ After running the experiments, you'll find:
 - **Attention visualizations**: `outputs/attention_vis/*.png`
 - **Robustness results**: `outputs/noise_tests/robustness_results.csv`
 
-## 🎯 Key Findings
-
-- **LoRA** achieves comparable performance to full fine-tuning with ~99% fewer trainable parameters
-- **BERTweet** shows better robustness to noisy inputs compared to DistilBERT
-- Attention visualization reveals model focus on hate-indicative tokens
-
-## 📝 Notes
+## Notes
 
 - Training times vary based on hardware (GPU/MPS/CPU)
 - Model checkpoints are gitignored due to size constraints
 - Encoded datasets are gitignored; run tokenization scripts to regenerate
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 **Issue**: CUDA out of memory
 - Reduce batch size in training scripts (default: 16)
@@ -156,7 +150,7 @@ After running the experiments, you'll find:
 **Issue**: Missing dataset
 - Ensure `data/dataset.json` exists before tokenization
 
-## 📚 References
+## References
 
 - HateXplain Dataset: [Paper](https://arxiv.org/abs/2012.10289)
 - LoRA: [Paper](https://arxiv.org/abs/2106.09685)
