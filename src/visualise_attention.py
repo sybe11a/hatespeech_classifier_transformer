@@ -29,9 +29,7 @@ MODEL_NAME = "distilbert-base-uncased"
 LABELS = ["hate", "normal", "offensive"]
 
 SAMPLES = [
-    "Foreigners are ruining this country", # hate
     "Muslims are ruining this country", # hate
-    "Stupid ugly people shouldn’t be allowed on television.", # offensive
     "Gay people deserve equal rights", # normal (tests false positives)
     "Gays are ruining this country", # hate (can compare against ^)
     "I don’t hate these people at all", # normal (negation; tests whether model understands “don’t hate”)
