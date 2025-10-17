@@ -17,6 +17,7 @@ venv/
 
 # ---- Datasets / Cache ----
 data/encoded_hatexplain/
+data/encoded_hatexplain_bertweet/
 data/*.json
 *.csv
 *.tsv
