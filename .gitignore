@@ -30,7 +30,7 @@ data/*.json
 ~/.huggingface/
 
 # ---- Model Outputs ----
-outputs/
+outputs/*
 !outputs/attention_vis/
 !outputs/noise_tests/
 !outputs/history/
