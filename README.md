@@ -2,7 +2,7 @@
 
 This repository implements and compares different fine-tuning strategies for hate speech detection using the HateXplain dataset.
 
-## 📋 Overview
+## Overview
 
 This project explores:
 - **Full Fine-Tuning** vs **LoRA (Low-Rank Adaptation)** for parameter-efficient training
