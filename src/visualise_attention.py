@@ -7,6 +7,13 @@ Now excludes special tokens ([CLS], [SEP], [PAD]) for cleaner visualization.
 """
 
 import os
+import warnings
+
+# Suppress warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=UserWarning)
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
@@ -22,7 +29,6 @@ MODEL_NAME = "distilbert-base-uncased"
 LABELS = ["hate", "normal", "offensive"]
 
 SAMPLES = [
-    "Immigrants are ruining this country", # hate
     "Foreigners are ruining this country", # hate
     "Muslims are ruining this country", # hate
     "Stupid ugly people shouldn’t be allowed on television.", # offensive
