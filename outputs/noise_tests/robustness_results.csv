@@ -1,0 +1,7 @@
+Model,Original Text,Noisy Text,Clean Prediction,Noisy Prediction,Changed?
+Full FT,Muslims are ruining this country.,muslims are runiing htis country.,offensive,normal,Yes
+Full FT,Stupid ugly people shouldn’t be allowed on television.,stupid ulgy epople hsouldn’t be allowed on television.,offensive,normal,Yes
+Full FT,"Everyone deserves to be treated with respect, even when we disagree.",Everyone deserves to be treated with eevn when we disagere.,normal,normal,No
+LoRA,Muslims are ruining this country.,mulsims are ruining this country.,hate,hate,No
+LoRA,Stupid ugly people shouldn’t be allowed on television.,stupid ugly ppl shouldn’t be allowed on television.,offensive,offensive,No
+LoRA,"Everyone deserves to be treated with respect, even when we disagree.","everyone dseerves to be treated with respect, even when we disagree.",normal,normal,No

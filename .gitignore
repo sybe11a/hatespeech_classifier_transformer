@@ -30,6 +30,10 @@ data/*.json
 
 # ---- Model Outputs ----
 outputs/
+!outputs/attention_vis/
+!outputs/noise_tests/
+!outputs/history/
+!outputs/plots/
 checkpoints/
 *.bin
 *.pt
