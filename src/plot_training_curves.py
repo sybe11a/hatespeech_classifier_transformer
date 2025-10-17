@@ -10,6 +10,11 @@ Works for both DistilBERT and BERTweet runs by changing LOGS below.
 
 import json
 import os
+import warnings
+
+# Suppress warnings
+warnings.filterwarnings("ignore")
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -96,11 +101,11 @@ plt.grid(alpha=0.3)
 plt.legend()
 
 # ---------------------------------------------------------------------
-# SAVE + SHOW
+# SAVE
 # ---------------------------------------------------------------------
 plt.tight_layout()
 plt.savefig(os.path.join(SAVE_DIR, "training_curves.png"),
             dpi=300, bbox_inches="tight")
-plt.show()
+plt.close()  # Close figure instead of showing
 
 print(f"[SAVED] Plot exported to {os.path.join(SAVE_DIR, 'training_curves.png')}")

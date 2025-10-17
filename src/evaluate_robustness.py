@@ -8,6 +8,13 @@ under lexical noise (typos, slang, casing changes).
 import os
 import csv
 import random
+import warnings
+
+# Suppress warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=UserWarning)
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
 import torch
 import numpy as np
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
