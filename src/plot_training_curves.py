@@ -21,12 +21,14 @@ import numpy as np
 # ---------------------------------------------------------------------
 # CONFIG
 # ---------------------------------------------------------------------
-LOGS = {
+DISTILBERT_LOGS = {
     "Full FT": "outputs/history/full_ft_logs.json",
     "LoRA": "outputs/history/lora_ft_logs.json",
-    # Uncomment for BERTweet runs:
-    # "BERTweet Full FT": "outputs/history/bertweet_full_ft_logs.json",
-    # "BERTweet LoRA": "outputs/history/bertweet_lora_ft_logs.json",
+}
+
+BERTWEET_LOGS = {
+    "Full FT": "outputs/history/bertweet_full_ft_logs.json",
+    "LoRA": "outputs/history/bertweet_lora_ft_logs.json",
 }
 
 SAVE_DIR = "outputs/plots"
@@ -53,59 +55,69 @@ def extract_metrics(path):
 
 
 # ---------------------------------------------------------------------
-# PLOT
+# PLOTTING FUNCTION
 # ---------------------------------------------------------------------
-plt.figure(figsize=(10, 5))
+def plot_training_curves(logs, title_prefix, save_name):
+    """Generate training curves plot for a given set of logs."""
+    plt.figure(figsize=(10, 5))
 
-# 1️⃣ Training vs Evaluation Loss
-plt.subplot(1, 2, 1)
-for name, path in LOGS.items():
-    epochs, train_loss, eval_loss, _ = extract_metrics(path)
+    # 1️⃣ Training vs Evaluation Loss
+    plt.subplot(1, 2, 1)
+    for name, path in logs.items():
+        epochs, train_loss, eval_loss, _ = extract_metrics(path)
 
-    # --- Aggregate training loss per epoch ---
-    num_epochs = len(eval_loss)
-    if num_epochs > 0:
-        points_per_epoch = len(train_loss) // num_epochs
-        train_loss_epoch = [
-            np.mean(train_loss[i * points_per_epoch:(i + 1) * points_per_epoch])
-            for i in range(num_epochs)
-        ]
-    else:
-        train_loss_epoch = train_loss
+        # --- Aggregate training loss per epoch ---
+        num_epochs = len(eval_loss)
+        if num_epochs > 0:
+            points_per_epoch = len(train_loss) // num_epochs
+            train_loss_epoch = [
+                np.mean(train_loss[i * points_per_epoch:(i + 1) * points_per_epoch])
+                for i in range(num_epochs)
+            ]
+        else:
+            train_loss_epoch = train_loss
 
-    # --- Plot ---
-    plt.plot(range(1, num_epochs + 1), train_loss_epoch,
-             linestyle="--", label=f"{name} – Train")
-    plt.plot(range(1, num_epochs + 1), eval_loss,
-             marker="o", linewidth=2, label=f"{name} – Eval")
+        # --- Plot ---
+        plt.plot(range(1, num_epochs + 1), train_loss_epoch,
+                 linestyle="--", label=f"{name} – Train")
+        plt.plot(range(1, num_epochs + 1), eval_loss,
+                 marker="o", linewidth=2, label=f"{name} – Eval")
 
-plt.xlabel("Epoch")
-plt.ylabel("Loss")
-plt.ylim(0.55, 0.9)
-plt.title("Training vs Evaluation Loss", fontsize=13)
-plt.grid(alpha=0.3)
-plt.legend()
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.ylim(0.5, 1.0)
+    plt.title(f"Training vs Evaluation Loss ({title_prefix})", fontsize=13)
+    plt.grid(alpha=0.3)
+    plt.legend()
 
-# 2️⃣ F1 Macro
-plt.subplot(1, 2, 2)
-for name, path in LOGS.items():
-    _, _, _, f1_macro = extract_metrics(path)
-    plt.plot(range(1, len(f1_macro) + 1), f1_macro,
-             marker='o', linewidth=2, label=name)
+    # 2️⃣ F1 Macro
+    plt.subplot(1, 2, 2)
+    for name, path in logs.items():
+        _, _, _, f1_macro = extract_metrics(path)
+        plt.plot(range(1, len(f1_macro) + 1), f1_macro,
+                 marker='o', linewidth=2, label=name)
 
-plt.xlabel("Epoch")
-plt.ylabel("F1 (Macro)")
-plt.ylim(0.65, 0.68)
-plt.title("F1 Macro over Epochs", fontsize=13)
-plt.grid(alpha=0.3)
-plt.legend()
+    plt.xlabel("Epoch")
+    plt.ylabel("F1 (Macro)")
+    plt.ylim(0.5, 1.0)
+    plt.title(f"F1 Macro over Epochs ({title_prefix})", fontsize=13)
+    plt.grid(alpha=0.3)
+    plt.legend()
+
+    # Save
+    plt.tight_layout()
+    save_path = os.path.join(SAVE_DIR, save_name)
+    plt.savefig(save_path, dpi=300, bbox_inches="tight")
+    plt.close()
+    
+    print(f"[SAVED] {title_prefix} plot exported to {save_path}")
+
 
 # ---------------------------------------------------------------------
-# SAVE
+# GENERATE PLOTS
 # ---------------------------------------------------------------------
-plt.tight_layout()
-plt.savefig(os.path.join(SAVE_DIR, "training_curves.png"),
-            dpi=300, bbox_inches="tight")
-plt.close()  # Close figure instead of showing
+# Plot for DistilBERT
+plot_training_curves(DISTILBERT_LOGS, "DistilBERT", "training_curves_distilbert.png")
 
-print(f"[SAVED] Plot exported to {os.path.join(SAVE_DIR, 'training_curves.png')}")
+# Plot for BERTweet
+plot_training_curves(BERTWEET_LOGS, "BERTweet", "training_curves_bertweet.png")
