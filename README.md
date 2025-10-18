@@ -139,9 +139,35 @@ After running the experiments, you'll find:
 - Model checkpoints are gitignored due to size constraints
 - Encoded datasets are gitignored; run tokenization scripts to regenerate
 
+## Dataset
+
+This project uses the **HateXplain** dataset, a benchmark dataset for explainable hate speech detection.
+
+### Citation
+
+```bibtex
+@article{mathew2020hatexplain,
+  title={HateXplain: A Benchmark Dataset for Explainable Hate Speech Detection}, 
+  author={Binny Mathew and Punyajoy Saha and Seid Muhie Yimam and Chris Biemann and Pawan Goyal and Animesh Mukherjee},
+  year={2021},
+  conference={AAAI Conference on Artificial Intelligence}
+}
+```
+
+### Dataset Curators
+
+- Binny Mathew - IIT Kharagpur, India
+- Punyajoy Saha - IIT Kharagpur, India
+- Seid Muhie Yimam - Universität Hamburg, Germany
+- Chris Biemann - Universität Hamburg, Germany
+- Pawan Goyal - IIT Kharagpur, India
+- Animesh Mukherjee - IIT Kharagpur, India
+
+**License**: MIT License
+
 ## References
 
-- HateXplain Dataset: [Paper](https://arxiv.org/abs/2012.10289)
+- HateXplain Dataset: [Paper](https://arxiv.org/abs/2012.10289) | [Hugging Face](https://huggingface.co/datasets/hatexplain)
 - LoRA: [Paper](https://arxiv.org/abs/2106.09685)
 - DistilBERT: [Paper](https://arxiv.org/abs/1910.01108)
 - BERTweet: [Paper](https://arxiv.org/abs/2005.10200)
