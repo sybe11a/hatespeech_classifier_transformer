@@ -167,7 +167,7 @@ This project uses the **HateXplain** dataset, a benchmark dataset for explainabl
 
 ## References
 
-- HateXplain Dataset: [Paper](https://arxiv.org/abs/2012.10289) | [Hugging Face](https://huggingface.co/datasets/hatexplain)
+- HateXplain Dataset: [Paper](https://arxiv.org/abs/2012.10289) | [Hugging Face](https://huggingface.co/datasets/Hate-speech-CNERG/hatexplain)
 - LoRA: [Paper](https://arxiv.org/abs/2106.09685)
 - DistilBERT: [Paper](https://arxiv.org/abs/1910.01108)
 - BERTweet: [Paper](https://arxiv.org/abs/2005.10200)
