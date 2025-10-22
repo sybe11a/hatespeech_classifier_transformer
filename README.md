@@ -1,4 +1,4 @@
-# DSA4213 Assignment 3: Hate Speech Detection with Fine-Tuning
+# Fine-Tuning DistilBERT for Hate Speech Detection 
 
 This repository implements and compares different fine-tuning strategies for hate speech detection using the HateXplain dataset.
 
